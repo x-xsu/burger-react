@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 export const Navigation = () => {
   return (
-    <nav className="navigation">
+    <nav className={style.navigation}>
       <Container className={style.container}>
         <ul className={style.list}>
           <li>
