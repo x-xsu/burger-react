@@ -19,7 +19,12 @@ const initialState = {
 const categorySlice = createSlice({
   name: 'category',
   initialState,
-  reducers: {}
+  reducers: {
+    changeCategory(state, action) {
+      state.activeCategory = action.payload.indexCategory;
+    }
+  }
 });
 
+export const { changeCategory } = categorySlice.actions;
 export default categorySlice.reducer;
