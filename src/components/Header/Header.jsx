@@ -1,6 +1,6 @@
-import style from "./Header.module.css";
-import logo from "../../assets/img/logo.svg";
 import { Container } from "../Container/Container";
+import logo from "../../assets/img/logo.svg";
+import style from "./Header.module.css";
 
 export const Header = () => (
   <header className={style.header}>
