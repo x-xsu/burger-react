@@ -12,7 +12,7 @@ export const Product = ({ item }) => {
 
       <p className={style.price}>
         {item.price}
-        <span className={"currency"}>₽</span>
+        <span className={"currency"}>&nbsp;₽</span>
       </p>
 
       <h3 className={style.title}>
