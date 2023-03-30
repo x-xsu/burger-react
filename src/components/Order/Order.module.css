@@ -90,6 +90,13 @@
   margin-bottom: 8px;
 }
 
+.submit:disabled {
+  background: #d0d0d0;
+  color: #000;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
 .apeal {
   display: flex;
   align-items: center;
