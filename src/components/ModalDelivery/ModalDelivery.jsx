@@ -3,7 +3,7 @@ import style from "./ModalDelivery.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../store/modalDelivery/modalDeliverySlice.js";
 import { current } from "@reduxjs/toolkit";
-import { submitForm, updFormValue } from "../../store/form/formSlice.js";
+import { changeTouch, submitForm, updFormValue, validateForm } from "../../store/form/formSlice.js";
 
 export const ModalDelivery = () => {
   const { isOpen } = useSelector(state => state.modal);
@@ -17,11 +17,18 @@ export const ModalDelivery = () => {
       field: e.target.name,
       value: e.target.value,
     }));
+
+    dispatch(validateForm());
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(submitForm({ ...form, orderList }));
+    dispatch(validateForm());
+    dispatch(changeTouch());
+
+    if (Object.keys(form.errors).length === 0 && form.touch) {
+      dispatch(submitForm({ ...form, orderList }));
+    }
   };
 
   return isOpen && (
@@ -37,14 +44,18 @@ export const ModalDelivery = () => {
 
           <form className={style.form} id="delivery" onSubmit={handleSubmit}>
             <fieldset className={style.fieldset}>
-              <input
-                className={style.input}
-                type="text"
-                name="name"
-                value={form.name}
-                placeholder="Ваше имя"
-                onChange={handleInputChange}
-              />
+              <label>
+                <input
+                  className={style.input}
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  placeholder="Ваше имя"
+                  onChange={handleInputChange}
+                />
+                {form.errors.name && <span>{form.errors.name}</span>}
+              </label>
+
               <input
                 className={style.input}
                 type="tel"

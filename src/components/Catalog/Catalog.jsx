@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { productRequestAsync } from "../../store/product/productSlice.js";
 
 export const Catalog = () => {
-  const { products } = useSelector(state => state.product);
+  const { products, flag } = useSelector(state => state.product);
   const { category, activeCategory } = useSelector(state => state.category);
   const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ export const Catalog = () => {
           <h2 className={style.title}>{category[activeCategory]?.rus}</h2>
 
           <ul className={style.list}>
-            {products.length
+            {products.length && flag
               ? products.map(item => (
                   <li key={item.id}>
                     <Product item={item} />
