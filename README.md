@@ -1,3 +1,3 @@
 ## Burger React
 
-* запуск сервера из директории ```api_your_meal```: node index
+* запуск сервера из директории ```api```: node index
